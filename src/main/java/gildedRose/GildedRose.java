@@ -22,17 +22,15 @@ public class GildedRose {
                 default:
                     calculateQualityForOthers(items[i]);
             }
-            calculateItemSellIn(items[i]);
             calculateQualityBySellIn(items[i]);
         }
     }
 
     private void calculateQualityForOthers(Item item) {
-        if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
             if (item.quality > 0) {
                 item.quality = item.quality - 1;
             }
-        }
+        calculateItemSellIn(item);
     }
 
     private void calculateQualityBySellIn(Item item) {
@@ -62,16 +60,13 @@ public class GildedRose {
     }
 
     private void calculateQualityForAgedBrie(Item item) {
-        if (item.name.equals("Aged Brie")) {
             if (item.quality < 50) {
                 item.quality++;
             }
-
-        }
+        calculateItemSellIn(item);
     }
 
     private void calculateQualityForBackstage(Item item) {
-        if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
             if (item.quality < 50) {
                 item.quality++;
                 if (item.sellIn < 11) {
@@ -85,7 +80,6 @@ public class GildedRose {
                     }
                 }
             }
-
-        }
+        calculateItemSellIn(item);
     }
 }

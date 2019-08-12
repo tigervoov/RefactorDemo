@@ -40,10 +40,6 @@ public class GildedRose {
                 } else {
                     item.quality = item.quality - item.quality;
                 }
-            } else {
-                if (item.quality < 50) {
-                    item.quality = item.quality + 1;
-                }
             }
         }
     }
@@ -53,6 +49,7 @@ public class GildedRose {
             item.quality = item.quality - 1;
         }
         item.sellIn = item.sellIn - 1;
+
     }
 
     private void calculateQualityForAgedBrie(Item item) {
@@ -60,6 +57,11 @@ public class GildedRose {
             item.quality++;
         }
         item.sellIn = item.sellIn - 1;
+        if (item.sellIn < 0) {
+            if (item.quality < 50) {
+                item.quality = item.quality + 1;
+            }
+        }
     }
 
     private void calculateQualityForBackstage(Item item) {

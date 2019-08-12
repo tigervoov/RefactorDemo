@@ -26,12 +26,7 @@ public class GildedRose {
         }
     }
 
-    private void calculateQualityForOthers(Item item) {
-            if (item.quality > 0) {
-                item.quality = item.quality - 1;
-            }
-        calculateItemSellIn(item);
-    }
+
 
     private void calculateQualityBySellIn(Item item) {
         if (item.sellIn < 0) {
@@ -53,17 +48,18 @@ public class GildedRose {
         }
     }
 
-    private void calculateItemSellIn(Item item) {
-        if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
-            item.sellIn = item.sellIn - 1;
+    private void calculateQualityForOthers(Item item) {
+        if (item.quality > 0) {
+            item.quality = item.quality - 1;
         }
+        item.sellIn = item.sellIn - 1;
     }
 
     private void calculateQualityForAgedBrie(Item item) {
-            if (item.quality < 50) {
-                item.quality++;
-            }
-        calculateItemSellIn(item);
+        if (item.quality < 50) {
+            item.quality++;
+        }
+        item.sellIn = item.sellIn - 1;
     }
 
     private void calculateQualityForBackstage(Item item) {
@@ -80,6 +76,6 @@ public class GildedRose {
                     }
                 }
             }
-        calculateItemSellIn(item);
+        item.sellIn = item.sellIn - 1;
     }
 }

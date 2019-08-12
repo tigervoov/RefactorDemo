@@ -1,7 +1,7 @@
 package gildedRose;
 
 public class GildedRose {
-    Item[] items;
+    private Item[] items;
 
     public GildedRose(Item[] items) {
 
@@ -15,7 +15,7 @@ public class GildedRose {
                     calculateQualityForAgedBrie(items[i]);
                     break;
                 case "Backstage passes to a TAFKAL80ETC concert":
-                    calculateQualityForBackstage(items[i]);
+                    new CalQualityStrategyForBackstage().calculateQuality(items[i]);
                     break;
                 case "Sulfuras, Hand of Ragnaros":
                     break;
@@ -38,23 +38,4 @@ public class GildedRose {
         }
     }
 
-    private void calculateQualityForBackstage(Item item) {
-        if (item.quality < 50) {
-            item.quality++;
-            if (item.sellIn < 11) {
-                if (item.quality < 50) {
-                    item.quality++;
-                }
-            }
-            if (item.sellIn < 6) {
-                if (item.quality < 50) {
-                    item.quality++;
-                }
-            }
-        }
-        item.sellIn = item.sellIn - 1;
-        if (item.sellIn < 0) {
-            item.quality = item.quality - item.quality;
-        }
-    }
 }

@@ -18,8 +18,7 @@ public class GildedRose {
                 }
             } else {
                 if (items[i].quality < 50) {
-                    items[i].quality = items[i].quality + 1;
-
+                    calculateQualityForAgedBrie(items[i]);
                     calculateQualityForBackstage(items[i]);
                 }
             }
@@ -45,6 +44,12 @@ public class GildedRose {
                     }
                 }
             }
+        }
+    }
+
+    private void calculateQualityForAgedBrie(Item item) {
+        if(item.name.equals("Aged Brie")){
+            item.quality ++;
         }
     }
 

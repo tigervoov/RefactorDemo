@@ -1,4 +1,5 @@
 package gildedRose;
+
 public class GildedRose {
     Item[] items;
 
@@ -17,15 +18,10 @@ public class GildedRose {
                     }
                 }
             } else {
-                if (items[i].quality < 50) {
-                    calculateQualityForAgedBrie(items[i]);
-                    calculateQualityForBackstage(items[i]);
-                }
+                calculateQualityForAgedBrie(items[i]);
+                calculateQualityForBackstage(items[i]);
             }
-
-
             calculateItemSellIn(items[i]);
-
             calculateQualityBySellIn(items[i]);
         }
     }
@@ -57,25 +53,30 @@ public class GildedRose {
     }
 
     private void calculateQualityForAgedBrie(Item item) {
-        if(item.name.equals("Aged Brie")){
-            item.quality ++;
+        if (item.name.equals("Aged Brie")) {
+            if (item.quality < 50) {
+                item.quality++;
+            }
+
         }
     }
 
     private void calculateQualityForBackstage(Item item) {
         if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-            item.quality++;
-            if (item.sellIn < 11) {
-                if (item.quality < 50) {
-                    item.quality++;
+            if (item.quality < 50) {
+                item.quality++;
+                if (item.sellIn < 11) {
+                    if (item.quality < 50) {
+                        item.quality++;
+                    }
+                }
+                if (item.sellIn < 6) {
+                    if (item.quality < 50) {
+                        item.quality++;
+                    }
                 }
             }
 
-            if (item.sellIn < 6) {
-                if (item.quality < 50) {
-                    item.quality++;
-                }
-            }
         }
     }
 }

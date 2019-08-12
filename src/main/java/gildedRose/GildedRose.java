@@ -12,17 +12,21 @@ public class GildedRose {
         for (int i = 0; i < items.length; i++) {
             if (!items[i].name.equals("Aged Brie")
                     && !items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                if (items[i].quality > 0) {
-                    if (!items[i].name.equals("Sulfuras, Hand of Ragnaros")) {
-                        items[i].quality = items[i].quality - 1;
-                    }
-                }
+                calculateQualityForSulfuras(items[i]);
             } else {
                 calculateQualityForAgedBrie(items[i]);
                 calculateQualityForBackstage(items[i]);
             }
             calculateItemSellIn(items[i]);
             calculateQualityBySellIn(items[i]);
+        }
+    }
+
+    private void calculateQualityForSulfuras(Item item) {
+        if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
+            if (item.quality > 0) {
+                item.quality = item.quality - 1;
+            }
         }
     }
 

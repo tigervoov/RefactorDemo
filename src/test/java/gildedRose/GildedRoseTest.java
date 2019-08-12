@@ -135,15 +135,15 @@ public class GildedRoseTest {
         Assert.assertEquals("demo, -1, 0",items[0].toString());
     }
     @Test
-    public void should_return_correct_statement_when_A_demo_0_0() {
+    public void should_return_correct_statement_when_A_demo_0_40() {
         //given
-        Item item = new Item("demo", 0, 0);
+        Item item = new Item("demo", 0, 40);
         Item[] items ={item};
         GildedRose gildedRose = new GildedRose(items);
         //when
         gildedRose.updateQuality();
         //then
-        Assert.assertEquals("demo, -1, 0",items[0].toString());
+        Assert.assertEquals("demo, -1, 38",items[0].toString());
     }
 
 }

@@ -20,21 +20,11 @@ public class GildedRose {
                 case "Sulfuras, Hand of Ragnaros":
                     break;
                 default:
-                    calculateQualityForOthers(items[i]);
+                    new CalQualityStrategyForOthers().calculateQuality(items[i]);
             }
         }
     }
 
-    private void calculateQualityForOthers(Item item) {
-        if (item.quality > 0) {
-            item.quality = item.quality - 1;
-        }
-        item.sellIn = item.sellIn - 1;
-        if (item.quality > 0) {
-            item.quality = item.quality - 1;
-        }
-
-    }
 
     private void calculateQualityForAgedBrie(Item item) {
         if (item.quality < 50) {

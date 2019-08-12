@@ -23,9 +23,8 @@ public class GildedRose {
                 }
             }
 
-            if (!items[i].name.equals("Sulfuras, Hand of Ragnaros")) {
-                items[i].sellIn = items[i].sellIn - 1;
-            }
+
+            getItemSellIn(items[i]);
 
             if (items[i].sellIn < 0) {
                 if (!items[i].name.equals("Aged Brie")) {
@@ -44,6 +43,12 @@ public class GildedRose {
                     }
                 }
             }
+        }
+    }
+
+    private void getItemSellIn(Item item) {
+        if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
+            item.sellIn = item.sellIn - 1;
         }
     }
 

@@ -4,12 +4,11 @@ public class GildedRose {
     private Item[] items;
 
     public GildedRose(Item[] items) {
-
         this.items = items;
     }
 
     public void updateQuality() {
-        for (int i = 0; i < items.length; i++) {
+        for (int i = 0; i < items.length; i++)
             switch (items[i].name) {
                 case "Aged Brie":
                     new CalQualityStrategyForAgedBrie().calculateQuality(items[i]);
@@ -22,7 +21,6 @@ public class GildedRose {
                 default:
                     new CalQualityStrategyForOthers().calculateQuality(items[i]);
             }
-        }
     }
 
 

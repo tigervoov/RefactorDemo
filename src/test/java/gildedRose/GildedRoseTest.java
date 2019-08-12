@@ -145,4 +145,5 @@ public class GildedRoseTest {
         //then
         Assert.assertEquals("demo, -1, 0",items[0].toString());
     }
+
 }

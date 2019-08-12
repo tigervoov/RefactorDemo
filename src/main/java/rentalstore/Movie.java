@@ -1,24 +1,33 @@
 package rentalstore;
 
 public class Movie {
-    public static final int CHILDRENS = 2;
-    public static final int REGULAR = 0;
-    public static final int NEW_RELEASE = 1;
 
     private String title;
-    private int priceCode;
+    private PriceStrategy priceStrategy;
 
     public Movie(String title, int priceCode) {
         this.title = title;
-        this.priceCode = priceCode;
+        setPriceStrategy(priceCode);
     }
 
-    public int getPriceCode() {
-        return priceCode;
+    public PriceStrategy getPriceStrategy() {
+        return priceStrategy;
     }
 
-    public void setPriceCode(int priceCode) {
-        this.priceCode = priceCode;
+    private void setPriceStrategy(int priceCode) {
+        switch (priceCode){
+            case 0:
+                this.priceStrategy=new RegularStrategy();
+                break;
+            case 1:
+                this.priceStrategy=new NewReleaseStrategy();
+                break;
+            case 2:
+                this.priceStrategy=new ChildrenPriceSrategy();
+                break;
+            default:
+                throw new IllegalArgumentException(String.format("No support priceCode %d",priceCode));
+        }
     }
 
     public String getTitle() {
